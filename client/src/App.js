@@ -1,11 +1,26 @@
 import React from "react";
-import Auth from "./Auth"; // Adjust the path based on your directory structure
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { RouterProvider } from "react-router-dom";
+// import router from "./router";
+import Auth from "./Auth.js";
+import Homepage from "./Homepage.js";
 
 function App() {
   return (
-    <div className="App">
-      <Auth />
-    </div>
+    // <RouterProvider router={router}></RouterProvider>
+
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Auth />} />
+          <Route path="/homepage" element={<Homepage />} />
+        </Routes>
+      </div>
+    </Router>
+
+    // <div className="App">
+    //   <Auth />
+    // </div>
   );
 }
 

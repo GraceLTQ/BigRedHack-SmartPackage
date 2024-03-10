@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./index.css"; // Ensure this path is correct
+import { useNavigate } from "react-router-dom";
 
 // Firebase imports - Modular SDK
 import { initializeApp } from "firebase/app";
@@ -31,6 +32,8 @@ const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
+
+  const navigate = useNavigate();
 
   // Validation functions...
   // Ensure your validation functions are defined here (omitted for brevity)
@@ -65,7 +68,8 @@ const Auth = () => {
           full_name: fullName,
           last_login: Date.now(),
         });
-        alert("User Created!!");
+        // alert("User Created!!");
+        navigate("/homepage");
       })
       .catch((error) => {
         alert(error.message);
@@ -85,7 +89,8 @@ const Auth = () => {
         update(ref(database, "users/" + user.uid), {
           last_login: Date.now(),
         });
-        alert("User Logged In!!");
+        // alert("User Logged In!!");
+        navigate("/homepage");
       })
       .catch((error) => {
         alert(error.message);
